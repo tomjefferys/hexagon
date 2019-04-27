@@ -138,4 +138,25 @@ class HexGridTest extends FlatSpec with Matchers {
         |      \___/     \___/""".stripMargin
     )
   }
+
+  it should "generate a 2x2 grid when give correct hexes" in {
+    val hexGrid = HexGrid.getGrid(Set((0,0), (1,1), (0,2), (1,3)))
+                         .replaceAll(TRAILING_SPACE_REGEX, "")
+    println(hexGrid)
+
+    hexGrid should be (
+      """  ___
+        | /   \
+        |/     \___
+        |\     /   \
+        | \___/     \
+        | /   \     /
+        |/     \___/
+        |\     /   \
+        | \___/     \
+        |     \     /
+        |      \___/""".stripMargin
+    )
+
+  }
 }
