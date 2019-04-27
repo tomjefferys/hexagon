@@ -159,4 +159,21 @@ class HexGridTest extends FlatSpec with Matchers {
     )
 
   }
+
+  it should "be able to generate disconnected hexes" in {
+    val hexGrid = HexGrid.getGrid(Set((0,0), (2,0), (0,4), (2,4)))
+                         .replaceAll(TRAILING_SPACE_REGEX, "")
+    println(hexGrid)
+    hexGrid should be (  // Not the actual output, the trailing space regex is trashing empty lines
+      """  ___       ___
+        | /   \     /   \
+        |/     \   /     \
+        |\     /   \     /
+        | \___/     \___/
+        |  ___       ___
+        | /   \     /   \
+        |/     \   /     \
+        |\     /   \     /
+        | \___/     \___/""".stripMargin)
+  }
 }
