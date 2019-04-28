@@ -74,12 +74,12 @@ object HexGrid {
     val maxLocs = hexes.map(h => h.getGridLocation()._2)
 
     // Find the overall minimum location
-    val minLoc = (minLocs.foldLeft(Int.MaxValue) ((acc, loc) => min(acc, loc._1)),
-                  minLocs.foldLeft(Int.MaxValue) ((acc, loc) => min(acc, loc._2)))
+    val minLoc = (minLocs.foldLeft(Int.MaxValue) ((acc, loc) => min(acc, loc.x)),
+                  minLocs.foldLeft(Int.MaxValue) ((acc, loc) => min(acc, loc.y)))
 
     // Find the overall maximum location
-    val maxLoc = (maxLocs.foldLeft(Int.MinValue) ((acc, loc) => max(acc, loc._1)),
-                  maxLocs.foldLeft(Int.MinValue) ((acc, loc) => max(acc, loc._2)))
+    val maxLoc = (maxLocs.foldLeft(Int.MinValue) ((acc, loc) => max(acc, loc.x)),
+                  maxLocs.foldLeft(Int.MinValue) ((acc, loc) => max(acc, loc.y)))
 
     val str = new StringBuilder
     for(y <- minLoc._2 to maxLoc._2) {

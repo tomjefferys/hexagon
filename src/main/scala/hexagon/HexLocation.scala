@@ -14,8 +14,6 @@ package hexagon
   *  \___/     \___/     \___/
   *
   * So not all coordinate pairs are valid
-  * @param x
-  * @param y
   */
 object HexLocation {
   implicit def toHexLocation(xy: (Int, Int)) = new HexLocation(xy._1, xy._2)
@@ -23,17 +21,17 @@ object HexLocation {
   def isValid(x: Int, y: Int) : Boolean = !(y%2 == 0 ^ x%2 == 0)
 }
 
-class HexLocation(val x: Int, val y: Int) {
+//class HexLocation(x: Int, y: Int) extends Location(x,y) {
+case class HexLocation(x: Int, y: Int) extends Location(x,y) {
 
   if (y%2 == 0 ^ x%2 == 0)
   {
     throw new IllegalArgumentException(s"Invalid coordinates: ($x,$y)")
   }
 
-  def +(that: (Int, Int)) : HexLocation = (x + that._1, y + that._2)
+  def +(that: Location) : HexLocation = (x + that.x, y + that.y)
 
-  // TODO make a location type
-  def getGridLocation() : ((Int, Int), (Int, Int)) = {
+  def getGridLocation() : (Location, Location) = {
     val startX = x * 5
     val startY = y * 2
     val endX = startX + 6
