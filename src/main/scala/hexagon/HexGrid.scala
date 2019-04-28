@@ -5,6 +5,7 @@ import java.lang.Math.{max, min}
 import hexagon.Slopes.{HORIZONTAL, LEFT_SLOPE, RIGHT_SLOPE}
 
 import scala.collection.mutable.ArrayBuffer
+import scala.util.Properties
 
 object HexGrid {
 
@@ -96,7 +97,7 @@ object HexGrid {
           }
         })
       }
-      str += '\n'
+      str ++= Properties.lineSeparator
     }
     return str.toString()
   }
