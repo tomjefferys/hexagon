@@ -22,7 +22,7 @@ object HexLocation {
 }
 
 //class HexLocation(x: Int, y: Int) extends Location(x,y) {
-case class HexLocation(x: Int, y: Int) extends Location(x,y) {
+case class HexLocation(x: Int, y: Int) {
 
   if (y%2 == 0 ^ x%2 == 0)
   {
