@@ -16,6 +16,17 @@ object HexTemplate {
     'E' -> (-1, 1),
     'F' -> ( 1, 1))
 
+  val SMALL = HexTemplate(
+    Array(
+      """\__/  """.toCharArray,
+      """/  \__""".toCharArray
+    ),
+    Array(
+      "AB,BD,BD,BC,CC,CC".split(','),
+      "AD,DD,DD,DC,CF,CF".split(',')
+    )
+  )
+
   val MEDIUM = HexTemplate(
     Array(
       """ \___/    """.toCharArray,
